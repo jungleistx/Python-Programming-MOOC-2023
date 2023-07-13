@@ -10,6 +10,15 @@ def build_variables() -> dict:
 	return variables
 
 
+def get_ab_values(orig_a:str, orig_b:str, variables:dict) -> tuple:
+	a = orig_a
+	if orig_b in ascii_uppercase:
+		b = variables[orig_b]
+	else:
+		b = int(orig_b)
+	return (a, b)
+
+
 def check_condition(a:str, operator:str, b:str, variables:dict) -> bool:
 	if operator == '>':
 		return a > b
