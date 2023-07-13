@@ -9,6 +9,23 @@ def build_variables() -> dict:
 		letter += 1
 	return variables
 
+
+def check_condition(a:str, operator:str, b:str, variables:dict) -> bool:
+	if operator == '>':
+		return a > b
+	elif operator == '<':
+		return a < b
+	elif operator == '==':
+		return a == b
+	elif operator == '<=':
+		return a <= b
+	elif operator == '>=':
+		return a >= b
+	elif operator == '!=':
+		return a != b
+	return False
+
+
 # PRINT [value]: prints the value
 # MOV [variable] [value]: assigns the value to the variable
 # ADD [variable] [value]: adds the value to the variable
