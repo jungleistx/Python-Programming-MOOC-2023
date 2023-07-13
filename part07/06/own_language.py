@@ -72,6 +72,46 @@ def jump(program:list, target:str) -> int:
 	return 0
 
 
+def run(program:list) -> list:
+	ab_commands = ['MOV', 'ADD', 'SUB', 'MUL']
+	output_values = []
+	variables = build_variables()
+
+	i = 0
+	max = len(program)
+	while i < max:
+		command = program[i].split(' ')
+
+		if command[0] in ab_commands:
+			a, b = get_ab_values(command[1], command[2], variables)
+
+		if command[0] == 'PRINT':
+			dummy, print_value = get_ab_values('0', command[1], variables)
+			output_values.append(print_value)
+		elif command[0] == 'MOV':
+			variables[a] = b
+		elif command[0] == 'ADD':
+			variables[a] += b
+		elif command[0] == 'SUB':
+			variables[a] -= b
+		elif command[0] == 'MUL':
+			variables[a] *= b
+		elif command[0] == 'JUMP':
+			i = jump(program, command[1])
+			continue
+		elif command[0] == 'IF':
+			a, b = get_ab_values(command[1], command[3], variables)
+			a = variables[a]
+			if check_condition(a, command[2], b, variables):
+				i = jump(program, command[5])
+				continue
+		elif command[0] == 'END':
+			break
+		i += 1
+
+	return output_values
+
+
 # PRINT [value]: prints the value
 # MOV [variable] [value]: assigns the value to the variable
 # ADD [variable] [value]: adds the value to the variable
