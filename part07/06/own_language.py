@@ -61,6 +61,17 @@ def check_condition(a:str, operator:str, b:str, variables:dict) -> bool:
 	return False
 
 
+def jump(program:list, target:str) -> int:
+	i = 0
+	max = len(program)
+	while i < max:
+		command = program[i].split(' ')
+		if command[0][:-1] == target:
+			return i
+		i += 1
+	return 0
+
+
 # PRINT [value]: prints the value
 # MOV [variable] [value]: assigns the value to the variable
 # ADD [variable] [value]: adds the value to the variable
