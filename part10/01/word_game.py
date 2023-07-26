@@ -76,9 +76,9 @@ class RockPaperScissors(WordGame):
 		super().__init__(rounds)
 
 	def round_winner(self, player1_word: str, player2_word: str):
-		valid_options = ['rock', 'paper', 'scissors']
-		valid_p1 = player1_word in valid_options
-		valid_p2 = player2_word in valid_options
+		valid_options = {'rock': 0, 'paper': 1, 'scissors': 2}
+		valid_p1 = player1_word in valid_options.keys()
+		valid_p2 = player2_word in valid_options.keys()
 
 		# atleast one input is invalid
 		if valid_p1 and not valid_p2:
@@ -88,26 +88,26 @@ class RockPaperScissors(WordGame):
 		elif not valid_p1 and not valid_p2:
 			return 0
 
-		# tie
-		if player1_word == player2_word:
-			return 0
+		# difference in selected options
+		result = valid_options[player1_word] - valid_options[player2_word]
+		'''		__player1		__player2		__result	__winner
 
-		# remaining options
-		if player1_word == 'rock':
-			if player2_word == 'scissors':
-				return 1
-			else:
-				return 2
-		elif player1_word == 'paper':
-			if player2_word == 'rock':
-				return 1
-			else:
-				return 2
+				rock (0)		rock(0)			0			T
+				paper (1)		paper(1)		0			T
+				scissors (2)	scissors(2)		0			T
+				rock (0)		scissors(2)		-2			P1
+				paper (1)		rock(0)			1			P1
+				scissors (2)	paper(1)		1			P1
+				rock (0)		paper(1)		-1			P2
+				paper (1)		scissors(2)		-1			P2
+				scissors (2)	rock(0)			2			P2
+		'''
+		if result == 1 or result == -2:
+			return 1
+		elif result == -1 or result == 2:
+			return 2
 		else:
-			if player2_word == 'paper':
-				return 1
-			else:
-				return 2
+			return 0
 
 
 if __name__ == "__main__":
