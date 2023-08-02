@@ -1,10 +1,10 @@
 # Write your solution here:
 
 def sort_by_seasons(items:list) -> list:
-	def sort_by_seasons(item:dict):
+	def get_seasons(item:dict):
 		return item['seasons']
 
-	return sorted(items, key=sort_by_seasons)
+	return sorted(items, key=get_seasons)
 
 
 if __name__ == "__main__":
