@@ -1,6 +1,6 @@
 # WRITE YOUR SOLUTION HERE:
 
-import pygame, random
+import pygame
 
 WIDTH, HEIGHT = 640, 480
 BLACK = (0, 0, 0)
