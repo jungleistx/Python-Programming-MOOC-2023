@@ -36,7 +36,7 @@ robot_width = robot.get_width()
 max_x = WIDTH - robot_width
 max_y = HEIGHT - robot_height
 edge_left = 0 - robot_width
-edge_right = WIDTH + robot_width
+edge_right = WIDTH
 
 robot_list = []
 while len(robot_list) < ROBOTS:
