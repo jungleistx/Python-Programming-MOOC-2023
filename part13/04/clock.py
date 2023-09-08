@@ -8,7 +8,8 @@ def calculate_angles(t: datetime) -> tuple:
 	# 360 degrees / [60s / 60m / 12h] * timeunit - offset
 	second_angle = math.radians(6 * t.second - 90)
 	minute_angle = math.radians(6 * t.minute - 90)
-	hour_angle = math.radians(30 * t.hour - 90)
+	# every minute adds 0.5 degree to the hour
+	hour_angle = math.radians(30 * t.hour + t.minute / 2 - 90)
 	return (second_angle, minute_angle, hour_angle)
 
 
