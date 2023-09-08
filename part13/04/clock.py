@@ -16,6 +16,7 @@ WIDTH, HEIGHT = 640, 480
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
+WHITE = (255, 255, 255)
 
 pygame.init()
 window = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -30,9 +31,9 @@ centroid = (WIDTH // 2, HEIGHT // 2)		# middle point
 
 # draw outer 'border' and clock center
 window.fill(BLACK)
-pygame.draw.circle(window, RED, centroid, outer_circle_radius)
+pygame.draw.circle(window, WHITE, centroid, outer_circle_radius)
 pygame.draw.circle(window, BLACK, centroid, inner_circle_radius)
-pygame.draw.circle(window, RED, centroid, center_radius)
+pygame.draw.circle(window, WHITE, centroid, center_radius)
 pygame.display.flip()
 
 second_width = 1
@@ -53,7 +54,7 @@ while True:
 
 	# reset center circles
 	pygame.draw.circle(window, BLACK, centroid, inner_circle_radius)
-	pygame.draw.circle(window, RED, centroid, center_radius)
+	pygame.draw.circle(window, WHITE, centroid, center_radius)
 
 	# update title to current time
 	t = datetime.now()
@@ -65,7 +66,7 @@ while True:
 	for i in range(3):
 		x = centroid[0] + lengths[i] * math.cos(angles[i])
 		y = centroid[1] + lengths[i] * math.sin(angles[i])
-		pygame.draw.line(window, BLUE, centroid, (x, y), widths[i])
+		pygame.draw.line(window, WHITE, centroid, (x, y), widths[i])
 
 	pygame.display.flip()
 
