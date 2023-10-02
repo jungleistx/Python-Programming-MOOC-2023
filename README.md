@@ -2,3 +2,6 @@
 Helsinki University course
 
 Find the course here -> https://programming-23.mooc.fi/
+
+Introduction to Programming is parts 01-07.
+Advanced Course in Programming is parts 08-14.
